@@ -1,0 +1,16 @@
+host: db4free.net
+Database name: so2proyecto2
+admin: so2admin
+password: so2password
+
+The host name to access the server is db4free.net and the port is 3306. You can use phpMyAdmin on our website to log in to the server.
+
+
+
+cd C:\Program Files\MySQL\MySQL Server 8.0\bin
+
+mysql -u so2admin -pso2password --host=db4free.net --port=3306
+
+show databases;
+
+use so2proyecto2;

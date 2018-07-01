@@ -8,12 +8,13 @@ package distribucionchat;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.UUID;
 
 public class ServidorSQL {
 
     public static void main(String[] args) {
-        ServidorSQL obj_DAO = new ServidorSQL();
-        obj_DAO.Check_Data();
+        ServidorSQL server = new ServidorSQL();
+        server.Check_Data();
     }
 
     public void Check_Data() {
@@ -30,5 +31,18 @@ public class ServidorSQL {
         } catch (Exception e) {
             System.out.println(e);
         }
+    }
+    
+    public void createUser(String nombreCompleto, String loginName, String password){
+        /*
+            uuid
+            nombre completo
+            login name
+            password
+            fecha de creacion
+            fecha de accesos al sistema
+        
+        */
+      
     }
 }
