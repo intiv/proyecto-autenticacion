@@ -7,6 +7,7 @@ package distribucionchat;
 import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.rmi.AccessException;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
@@ -44,19 +45,30 @@ public class Cliente {
     
     public void iniciar() {
     try {
+            System.setProperty("java.security.policy","./test.policy");
+            try{
+                String current = new java.io.File( "." ).getCanonicalPath();
+                System.out.println("Current dir:"+current);
+            }catch(IOException ioex){
+                
+            }
+            if (System.getSecurityManager() == null) {
+                System.out.println("Holiwis");
+                System.setSecurityManager(new SecurityManager());
+            }
             this.ID = Integer.parseInt(JOptionPane.showInputDialog("Ingrese ID (Numero unico distinto de 0)"));
             this.cGUI.setTitle(this.nombre+": "+this.ID);
-            Registry myRegistry = LocateRegistry.getRegistry("127.0.0.1", 1099);                         
+            Registry myRegistry = LocateRegistry.getRegistry("190.53.65.153", 1099);                         
             this.mensaje = (Mensaje) myRegistry.lookup("miMensaje");                        
             if (this.cGUI == null)
                 mensaje.registrar(new MensajeImpl());            
             else
                 mensaje.registrar(new MensajeImpl(this.cGUI, this.ID));            
-        } catch (RemoteException ex) {
-            System.out.println("");
-        } catch (NotBoundException ex) {
-            System.out.println("");
-        }
+        } catch (RemoteException rex) {
+            rex.printStackTrace();
+        } catch (NotBoundException nbex) {
+            nbex.printStackTrace();
+        } 
     }
     public void enviarMensaje(String message) {
         try {
