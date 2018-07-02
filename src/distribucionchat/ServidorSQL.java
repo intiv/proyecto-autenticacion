@@ -8,6 +8,7 @@ package distribucionchat;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 import java.util.UUID;
 
 public class ServidorSQL {
@@ -34,7 +35,7 @@ public class ServidorSQL {
         }
     }
     
-    public void createUser(String nombreCompleto, String loginName, String password){
+    public int createUser(String nombreCompleto, String loginName, String password){
         /*
             uuid
             nombre completo
@@ -44,6 +45,52 @@ public class ServidorSQL {
             fecha de accesos al sistema
         
         */
+        
+        return -1;
       
     }
+    
+    public UUID loginRequest(String loginName, String password){
+        UUID temp = UUID.randomUUID();
+        
+        
+        return temp;
+    }
+    
+    public ArrayList<String> lookupUser(UUID uuid){
+        ArrayList temp = new ArrayList();
+        
+        
+        return temp;
+        
+    }
+    
+    public ArrayList<String> lookupUser(String username){
+        ArrayList temp = new ArrayList();
+        
+        
+        return temp;
+        
+    }
+    
+    public int deleteUser(String username, String password){
+        
+        
+        return -1;
+    }
+    
+    
+    public int updateLoginUser(String newloginName, String oldLoginName){
+        
+        return -1;
+    }
+    
+    public ArrayList<ArrayList<String>> getUsers (){
+        ArrayList<ArrayList<String>> temp = new ArrayList();
+        
+        
+        return temp;
+    }
+    
+    
 }
