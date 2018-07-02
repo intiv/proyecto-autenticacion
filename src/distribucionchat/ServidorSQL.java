@@ -24,7 +24,8 @@ public class ServidorSQL {
         try {
             String query = "select * from test1";
             ps = connection.prepareStatement(query);
-            ResultSet rs = ps.executeQuery();
+            ps.execute();
+            ResultSet rs = ps.getResultSet();
             while (rs.next()) {
                 System.out.println("name- " + rs.getString("name"));
             }
